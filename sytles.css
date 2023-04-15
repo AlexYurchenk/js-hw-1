@@ -75,8 +75,8 @@
 .main__card {
     margin-right: auto;
     margin-left: auto;
-    width: 200px;
-    height: 200px;
+    min-width: 200px;
+    min-height: 200px;
     display: flex;
     padding: 20px;
     justify-content: center;
