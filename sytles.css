@@ -1,0 +1,120 @@
+:root {
+    --header-paddings: 20px;
+    --mobile-container-width: 480px;
+    --tal-container-width: 768px;
+    --desktop-container-width: 1200px;
+    --container-paddings: 15px;
+    --header-background-color: rgb(205, 209, 228);
+    --main-background-color: rgb(255, 255, 255);
+    --item-background-color: rgb(128, 128, 128);
+    --item-color: rgb(255, 255, 255);
+    --input-background-color: rgb(255, 255, 255);
+    --input-border-color: rgb(15, 10, 222);
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--header-paddings) 0px var(--header-paddings) 0px;
+    background-color: var(--header-background-color);
+    width: 100%;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: var(--mobile-container-width);
+    height: 100%;
+
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: var(--container-paddings);
+    padding-right: var(--container-paddings);
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form__input {
+    display: block;
+    width: 200px;
+    height: 40px;
+    background-color: var(--input-background-color);
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid var(--input-border-color);
+    margin-bottom: 20px;
+}
+.form__button {
+    display: block;
+    width: 200px;
+    height: 40px;
+    background-color: var(--input-background-color);
+    border-radius: 5px;
+}
+.header__list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+.list__button {
+    width: 90px;
+    height: 40px;
+    border-radius: 5px;
+}
+.main {
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+.main__card {
+    margin-right: auto;
+    margin-left: auto;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    border-radius: 5%;
+    border: 1px solid black;
+    flex-wrap: wrap;
+}
+.card__title {
+    font-size: 24px;
+    line-height: 1.3em;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+    display: block;
+    width: 100%;
+}
+.card__content {
+    font-size: 40px;
+    line-height: 1.3em;
+    font-weight: bold;
+    color: red;
+    display: block;
+}
+.main__queue {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.queue__item {
+    display: flex;
+    justify-content: center;
+}
+.queue__content {
+    font-size: 20px;
+    line-height: 1.3em;
+    font-weight: bold;
+    color: blue;
+}

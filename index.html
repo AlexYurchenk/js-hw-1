@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./modern-normalize.css" />
+        <link rel="stylesheet" href="./reset.css" />
+        <link rel="stylesheet" href="./sytles.css" />
+        <title>HW1-JS</title>
+    </head>
+
+    <body>
+        <header class="header">
+            <div class="container">
+                <form class="form js-form">
+                    <input
+                        class="form__input js-age"
+                        type="number"
+                        pattern="^[+]?\d+([.]\d+)?$"
+                        placeholder="Put your age. The max length of the queue will be equal to this number"
+                    />
+                    <input class="form__input js-value" type="text" />
+                    <button class="form__button" type="submit">
+                        Add as a value
+                    </button>
+                </form>
+                <ul class="header__list">
+                    <li class="list__item">
+                        <button
+                            type="button"
+                            class="list__button enqueue js-enqueue"
+                        >
+                            Enqueue
+                        </button>
+                    </li>
+                    <li class="list__item">
+                        <button
+                            type="button"
+                            class="list__button dequeue js-dequeue"
+                        >
+                            Dequeue
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <main class="main">
+            <div class="container">
+                <div class="main__card">
+                    <h2 class="card__title">Current value</h2>
+                    <span class="card__content js-content"></span>
+                </div>
+                <ul class="main__queue js-queue"></ul>
+            </div>
+        </main>
+        <footer class="footer"></footer>
+        <script src="./index.js"></script>
+    </body>
+</html>
