@@ -6,11 +6,15 @@ const refs = {
     dequeueButton: document.querySelector('.js-dequeue'),
     currentContentValue: document.querySelector('.js-content'),
     queue: document.querySelector('.js-queue'),
+    formTitle: document.querySelector('.js-title'),
 };
-const savedItems = localStorage.getItem('items');
+const ITEMS = 'items';
+const AGE = 'age';
+const savedItems = localStorage.getItem(ITEMS);
+const savedAge = localStorage.getItem(AGE);
 class Queue {
     #items = savedItems ? JSON.parse(savedItems) : [];
-    #maxLength = null;
+    #maxLength = savedAge ? Number(JSON.parse(savedAge)) : null;
 
     enqueue(item) {
         if (this.#items.length + 1 > this.#maxLength) {
@@ -30,8 +34,12 @@ class Queue {
         }
         this.#maxLength = age;
     }
+    getMaxLength() {
+        return this.#maxLength;
+    }
 }
 const queue = new Queue();
+
 let currentValue = '';
 
 const handleFromSubmit = (event) => {
@@ -41,6 +49,7 @@ const handleFromSubmit = (event) => {
         const value = refs.contentInputField.value.trim();
         if (age) {
             queue.setMaxLength(age);
+            localStorage.setItem(AGE, age);
         }
         if (!age && refs.ageInputField.style.display !== 'none') {
             throw new Error('Put your age');
@@ -70,7 +79,7 @@ const handleEnqueueClick = () => {
             refs.dequeueButton.disabled = false;
         }
         queue.enqueue(currentValue);
-        localStorage.setItem('items', JSON.stringify(queue.getItems()));
+        localStorage.setItem(ITEMS, JSON.stringify(queue.getItems()));
         currentValue = '';
         updateMarkUp();
     } catch (error) {
@@ -85,7 +94,7 @@ const handleDequeueClick = () => {
         }
 
         queue.dequeue();
-        localStorage.setItem('items', JSON.stringify(queue.getItems()));
+        localStorage.setItem(ITEMS, JSON.stringify(queue.getItems()));
         currentValue = '';
         updateMarkUp();
     } catch (error) {
@@ -114,6 +123,14 @@ const makeQueue = (items) => {
 refs.form.addEventListener('submit', handleFromSubmit);
 refs.enqueueButton.addEventListener('click', handleEnqueueClick);
 refs.dequeueButton.addEventListener('click', handleDequeueClick);
+
+if (queue.getMaxLength()) {
+    refs.ageInputField.style.display = 'none';
+    refs.formTitle.innerHTML = `Queue max length is ${queue.getMaxLength()}`;
+}
+if (!queue.getMaxLength()) {
+    refs.formTitle.style.display = 'none';
+}
 if (!savedItems) {
     refs.dequeueButton.disabled = true;
 }
